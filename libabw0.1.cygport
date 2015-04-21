@@ -1,0 +1,25 @@
+NAME="libabw0.1"
+VERSION=0.1.1
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="AbiWord document import library"
+DESCRIPTION="Libabw is library providing ability to interpret and import
+AbiWord documents into various applications."
+HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libabw"
+SRC_URI="http://dev-www.libreoffice.org/src/libabw/libabw-${VERSION}.tar.xz"
+SRC_DIR="libabw-${VERSION}"
+PATCH_URI="
+	0.0.1-vpath.patch
+"
+
+PKG_NAMES="libabw-tools ${NAME}_1 ${NAME}-devel ${NAME}-doc"
+libabw_tools_CATEGORY="Graphics"
+libabw_tools_OBSOLETES="libabw-bin"
+libabw_tools_SUMMARY=${SUMMARY/library/utilities}
+libabw_tools_CONTENTS="usr/bin/*.exe"
+libabw0_1_1_CONTENTS="--exclude=html usr/bin/*-0.1-1.dll usr/share/doc/"
+libabw0_1_devel_CONTENTS="usr/include/ usr/lib/"
+libabw0_1_doc_CATEGORY="Doc"
+libabw0_1_doc_CONTENTS="usr/share/doc/${NAME}/html/"
+
+KEEP_LA_FILES="none"
